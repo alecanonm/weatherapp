@@ -9,12 +9,12 @@ const CustomHeader = () => {
         src={logo}
         alt="logo"
       />
-      <button className="flex xl:gap-2.5 gap-1.5 bg-neutral-800 py-2 px-2.5 xl:py-2 xl:px-4 rounded-lg cursor-pointer">
+      <button className="flex xl:gap-2.5 gap-1.5 bg-neutral-800 py-2 px-2.5 xl:py-3 xl:px-4 rounded-lg cursor-pointer">
         <img
           src={unitsIcon}
           alt="units"
         />
-        <span>Units</span>
+        <span className="text-[16px]/[1.2] font-medium">Units</span>
         <img
           src={dropDownIcon}
           alt="drop down"
