@@ -2,7 +2,7 @@ import sunnyIcon from "../../assets/images/icon-sunny.webp";
 
 const WeatherPanel = () => {
   return (
-    <div className="bg-[url('./assets/images/bg-today-small.svg')] xl:bg-[url('./assets/images/bg-today-large.svg')] flex justify-between items-center px-6 py-20 rounded-[20px]">
+    <section className="bg-[url('./assets/images/bg-today-small.svg')] sm:bg-[url('./assets/images/bg-today-large.svg')]  bg-no-repeat bg-cover bg-center flex sm:flex-row flex-col justify-between items-center px-6 py-20 rounded-[20px]">
       <div className="flex flex-col gap-3">
         <h2 className="text-[28px]/[1.2] font-medium">Berling, Germany</h2>
         <p className="text-[18px]/[1.2]">Tuesday, Aug 5, 2025</p>
@@ -18,7 +18,7 @@ const WeatherPanel = () => {
           20&deg;
         </span>
       </div>
-    </div>
+    </section>
   );
 };
 

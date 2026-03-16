@@ -4,7 +4,7 @@ import dropDownIcon from "../../assets/images/icon-dropdown.svg";
 
 const CustomHeader = () => {
   return (
-    <header className="flex justify-between items-center text-neutral-0 font-dm-sans">
+    <header className="flex  xl:px-28 backdrop-blur-md justify-between items-center text-neutral-0 font-dm-sans">
       <img
         src={logo}
         alt="logo"

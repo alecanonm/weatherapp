@@ -1,9 +1,8 @@
-import searchIcon from "./assets/images/icon-search.svg";
-
+import searchIcon from "../../assets/images/icon-search.svg";
 
 const CustomSearch = () => {
   return (
-    <div className="flex gap-4 ">
+    <div className="flex gap-4  justify-center">
       <div className="relative w-full max-w-md">
         <img
           src={searchIcon}
