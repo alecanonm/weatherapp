@@ -12,7 +12,7 @@ const WeatherApp = () => {
       <CustomHeader />
       <main className="self-center flex flex-col gap-16">
         <JumboTron text="How's the sky looking today?" />
-        <div>
+        <section>
           <div className="flex flex-col gap-8">
             <CustomSearch />
             <div className=" grid xl:flex items-center gap-8">
@@ -26,7 +26,7 @@ const WeatherApp = () => {
               <HourlyForecast />
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );

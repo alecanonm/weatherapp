@@ -4,8 +4,8 @@ const DailyForecast = () => {
   return (
     <section className="flex flex-col gap-5">
       <h3 className="text-[20px]/[1.2] font-semibold">Daily forecast</h3>
-      <div className="grid grid-cols-3 xl:grid-cols-7 gap-4">
-        <div className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
+      <ul className="grid grid-cols-3 xl:grid-cols-7 gap-4">
+        <li className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
           <span className="text-[18px]/[1.2]">Tue</span>
           <img
             src={cloudIcon}
@@ -17,8 +17,8 @@ const DailyForecast = () => {
             <span>20&deg;</span>
             <span>14&deg;</span>
           </p>
-        </div>
-        <div className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
+        </li>
+        <li className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
           <span className="text-[18px]/[1.2]">Tue</span>
           <img
             src={cloudIcon}
@@ -30,8 +30,8 @@ const DailyForecast = () => {
             <span>20&deg;</span>
             <span>14&deg;</span>
           </p>
-        </div>
-        <div className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
+        </li>
+        <li className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
           <span className="text-[18px]/[1.2]">Tue</span>
           <img
             src={cloudIcon}
@@ -43,8 +43,8 @@ const DailyForecast = () => {
             <span>20&deg;</span>
             <span>14&deg;</span>
           </p>
-        </div>
-        <div className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
+        </li>
+        <li className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
           <span className="text-[18px]/[1.2]">Tue</span>
           <img
             src={cloudIcon}
@@ -56,8 +56,8 @@ const DailyForecast = () => {
             <span>20&deg;</span>
             <span>14&deg;</span>
           </p>
-        </div>
-        <div className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
+        </li>
+        <li className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
           <span className="text-[18px]/[1.2]">Tue</span>
           <img
             src={cloudIcon}
@@ -69,8 +69,8 @@ const DailyForecast = () => {
             <span>20&deg;</span>
             <span>14&deg;</span>
           </p>
-        </div>
-        <div className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
+        </li>
+        <li className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
           <span className="text-[18px]/[1.2]">Tue</span>
           <img
             src={cloudIcon}
@@ -82,8 +82,8 @@ const DailyForecast = () => {
             <span>20&deg;</span>
             <span>14&deg;</span>
           </p>
-        </div>
-        <div className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
+        </li>
+        <li className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
           <span className="text-[18px]/[1.2]">Tue</span>
           <img
             src={cloudIcon}
@@ -95,8 +95,8 @@ const DailyForecast = () => {
             <span>20&deg;</span>
             <span>14&deg;</span>
           </p>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
   );
 };
