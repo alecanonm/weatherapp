@@ -8,7 +8,7 @@ const CustomHeader = () => {
   const [showUnits, setShowUnits] = useState<boolean>(false);
 
   return (
-    <header className="flex  xl:px-28 backdrop-blur-md justify-between items-center text-neutral-0 font-dm-sans">
+    <header className="flex z-50 xl:px-28 backdrop-blur-md justify-between items-center text-neutral-0 font-dm-sans">
       <img
         src={logo}
         alt="logo"
