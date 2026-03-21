@@ -1,6 +1,16 @@
+import { useQuery } from "@tanstack/react-query";
 import sunnyIcon from "../../assets/images/icon-sunny.webp";
+import { getWeather } from "../../actions/get-weather.action";
 
 const WeatherPanel = () => {
+  const { data } = useQuery({
+    queryKey: ["weather"],
+    queryFn: () => getWeather(52.52, 13.41),
+    staleTime: 1000 * 60 * 5,
+  });
+
+  console.log(data);
+
   return (
     <section className="bg-[url('./assets/images/bg-today-small.svg')] sm:bg-[url('./assets/images/bg-today-large.svg')]  bg-no-repeat bg-cover bg-center flex sm:flex-row flex-col justify-between items-center px-6 py-20 rounded-[20px]">
       <div className="flex flex-col gap-3">

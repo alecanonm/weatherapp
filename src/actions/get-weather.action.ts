@@ -1,7 +1,10 @@
 import { weatherApi } from "../api/weather.api";
 import type { Weather } from "../interfaces/weather.interface";
 
-export const getWeather = async (lat: string, lon: string) => {
+export const getWeather = async (
+  lat: number,
+  lon: number,
+): Promise<Weather> => {
   const response = await weatherApi.get<Weather>("/forecast", {
     params: {
       latitude: lat,
