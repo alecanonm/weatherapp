@@ -1,8 +1,4 @@
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CustomHeader from "./components/Header/CustomHeader";
 import JumboTron from "./components/Jumbotron/JumboTron";
 import CustomSearch from "./components/Search/CustomSearch";
