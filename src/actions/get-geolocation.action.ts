@@ -1,4 +1,4 @@
-import { geoLocationApi } from "../api/GeoLocation.api";
+import { geoLocationApi } from "../api/geoLocation.api";
 import type { Geolocation, Result } from "../interfaces/geolocation.interface";
 
 export const getGeoLocation = async (city: string): Promise<Result> => {
