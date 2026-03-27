@@ -13,9 +13,9 @@ export const getWeather = async (
       hourly:
         "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weathercode",
       daily: "temperature_2m_max,temperature_2m_min,weathercode",
-      temperature_unit: "fahrenheit",
-      wind_speed_unit: "mph",
-      precipitation_unit: "inch",
+      temperature_unit: "celsius",
+      wind_speed_unit: "kmh",
+      precipitation_unit: "mm",
       timezone: "auto",
     },
   });
