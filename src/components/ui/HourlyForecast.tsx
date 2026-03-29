@@ -1,30 +1,29 @@
+import { useState } from "react";
 import dropDownIcon from "../../assets/images/icon-dropdown.svg";
 import DaysDropdown from "./DaysDropdown";
 import { formatHour } from "../../helper/hourFormatter";
 import { getWeatherIcon } from "../../utils/getWeatherIcon";
 import useHourlyWeather from "../../hook/useHourlyWeather";
 import { useSearchParams } from "react-router";
+import { getDayOfWeek } from "../../utils/dateformat";
 
 const HourlyForecast = () => {
-  const { upcomingHours, hourlyData } = useHourlyWeather("23-04-2026");
   const [searchParams, setSearchParams] = useSearchParams();
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  const selectedDate = searchParams.get("day");
+  const defaultDate = new Date().toISOString().split("T")[0];
+  const selectedDate = searchParams.get("day") || defaultDate;
+
+  const { upcomingHours } = useHourlyWeather(selectedDate);
 
   const handleSelectDay = (date: string) => {
     setSearchParams({ day: date });
+    setShowDropdown(false);
   };
 
   const toggleDropdown = () => {
-    if (selectedDate) {
-      searchParams.delete("day");
-      setSearchParams(searchParams);
-    } else {
-      setSearchParams({ day: hourlyData?.[0].time[0] || "" });
-    }
+    setShowDropdown((prev) => !prev);
   };
-
-  console.log(selectedDate);
 
   return (
     <section className="bg-neutral-800 relative flex flex-col gap-4 p-6 min-w-[384px] rounded-[20px]">
@@ -33,7 +32,7 @@ const HourlyForecast = () => {
         <button
           onClick={toggleDropdown}
           className="flex cursor-pointer bg-neutral-600 px-4 py-2 gap-3 rounded-lg">
-          <span>Tuesday</span>
+          <span>{getDayOfWeek(selectedDate)}</span>
           <img
             src={dropDownIcon}
             alt="icon"
@@ -41,12 +40,14 @@ const HourlyForecast = () => {
             height={18}
           />
         </button>
-        {selectedDate && (
-          <div className="absolute top-18 right-5 ">
+
+        {showDropdown && (
+          <div className="absolute top-18 right-5">
             <DaysDropdown onSelectDay={handleSelectDay} />
           </div>
         )}
       </div>
+
       <ul className="flex flex-col gap-4">
         {upcomingHours?.map((data) => (
           <li

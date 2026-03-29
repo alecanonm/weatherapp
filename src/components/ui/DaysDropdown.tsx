@@ -18,8 +18,8 @@ const DaysDropdown = ({ onSelectDay }: Props) => {
     return Array.from({ length: 7 }).map((_, i) => {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
-      const dayName = daysOfWeek[date.getDay()]; // obtiene "Monday", "Tuesday", etc.
-      const formattedDate = date.toISOString().split("T")[0]; // "YYYY-MM-DD"
+      const dayName = daysOfWeek[date.getDay()];
+      const formattedDate = date.toISOString().split("T")[0];
       return { dayName, date: formattedDate };
     });
   };

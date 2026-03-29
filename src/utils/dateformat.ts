@@ -29,3 +29,20 @@ export const formatDate = (date?: string | Date): string => {
 
   return capitalize(formatted);
 };
+
+export const getDayOfWeek = (dateInput: string | Date): string => {
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  const date =
+    typeof dateInput === "string" ? new Date(dateInput + "T00:00") : dateInput;
+
+  return daysOfWeek[date.getDay()];
+};
