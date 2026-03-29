@@ -21,7 +21,9 @@ const DailyForecast = () => {
       <h3 className="text-[20px]/[1.2] font-semibold">Daily forecast</h3>
       <ul className="grid grid-cols-3 xl:grid-cols-7 gap-4">
         {dailyForecast?.map((day) => (
-          <li className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
+          <li
+            key={day.day}
+            className="bg-neutral-800 flex flex-col py-4 px-2.5 gap-4 min-w-25 rounded-xl items-center ">
             <span className="text-[18px]/[1.2]">{day.day}</span>
             <img
               src={getWeatherIcon(day.code)}
