@@ -3,7 +3,7 @@ import useWeather from "./useWeather";
 const useHourlyWeather = (date: string | Date) => {
   const { weatherInfoApi } = useWeather();
 
-  const hourlyData = weatherInfoApi?.hourly.time.map((time, i) => ({
+  const hourlyData = weatherInfoApi?.hourly?.time?.map((time, i) => ({
     time,
     temp: weatherInfoApi.hourly.temperature_2m[i],
     code: weatherInfoApi.hourly.weathercode[i],
