@@ -25,8 +25,8 @@ const useWeather = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const lat = searchedLocation?.latitude ?? currentLocation?.lat;
-  const lon = searchedLocation?.longitude ?? currentLocation?.lon;
+  const lat = searchedLocation?.results?.[0]?.latitude ?? currentLocation?.lat;
+  const lon = searchedLocation?.results?.[0]?.longitude ?? currentLocation?.lon;
 
   const { isLoading } = useQuery({
     queryKey: ["weather", lat, lon],
@@ -37,7 +37,8 @@ const useWeather = () => {
   });
 
   const weatherInfoApi = weather;
-  const city = weather?.timezone?.split("/");
+  const city = searchedLocation?.results?.[0].name;
+  const country = searchedLocation?.results?.[0].country;
   const currentDate = formatDate(weather?.daily?.time?.[0]);
   const temperature = weather?.current_weather?.temperature;
   const windspeed = weather?.current_weather?.windspeed.toFixed();
@@ -55,6 +56,7 @@ const useWeather = () => {
     feelsLike,
     humidity,
     weatherInfoApi,
+    country,
   };
 };
 
