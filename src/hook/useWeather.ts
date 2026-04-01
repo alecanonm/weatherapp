@@ -11,18 +11,20 @@ const useWeather = () => {
 
   const query = searchParams.get("q");
 
+  const tempUnit = searchParams.get("temp") || "celsius";
+  const windUnit = searchParams.get("wind") || "kmh";
+  const precipUnit = searchParams.get("precip") || "mm";
+
   const { data: searchedLocation } = useQuery({
     queryKey: ["geocoding", query],
     queryFn: () => getGeoLocation(query!),
     enabled: !!query,
-    staleTime: 1000 * 60 * 10,
   });
 
   const { data: currentLocation } = useQuery({
     queryKey: ["currentLocation"],
     queryFn: () => getCurrentLocation(),
     retry: false,
-    staleTime: 1000 * 60 * 5,
   });
 
   const lat = searchedLocation?.results?.[0]?.latitude ?? currentLocation?.lat;
@@ -31,32 +33,42 @@ const useWeather = () => {
   const { isLoading } = useQuery({
     queryKey: ["weather", lat, lon],
     queryFn: () => fetchWeather(lat!, lon!),
-    retry: false,
-    enabled: !!location,
-    staleTime: 1000 * 60 * 5,
+    enabled: !!lat && !!lon,
   });
 
-  const weatherInfoApi = weather;
-  const city = searchedLocation?.results?.[0].name;
-  const country = searchedLocation?.results?.[0].country;
-  const currentDate = formatDate(weather?.daily?.time?.[0]);
-  const temperature = weather?.current_weather?.temperature;
-  const windspeed = weather?.current_weather?.windspeed.toFixed();
-  const precipitation = weather?.hourly?.precipitation[0];
-  const feelsLike = weather?.hourly?.apparent_temperature[0].toFixed();
-  const humidity = weather?.hourly?.relative_humidity_2m[0];
+  const rawTemp = weather?.current_weather?.temperature;
+  const rawWind = weather?.current_weather?.windspeed;
+  const rawPrecip = weather?.hourly?.precipitation[0];
+  const rawFeels = weather?.hourly?.apparent_temperature[0];
+
+  const temperature =
+    tempUnit === "fahrenheit" ? (rawTemp! * 9) / 5 + 32 : rawTemp;
+
+  const feelsLike =
+    tempUnit === "fahrenheit"
+      ? ((rawFeels! * 9) / 5 + 32).toFixed()
+      : rawFeels?.toFixed();
+
+  const windspeed =
+    windUnit === "mph" ? (rawWind! * 0.621371).toFixed() : rawWind?.toFixed();
+
+  const precipitation =
+    precipUnit === "inch" ? (rawPrecip! * 0.0393701).toFixed(2) : rawPrecip;
 
   return {
     isLoading,
-    city,
-    currentDate,
+    city: searchedLocation?.results?.[0]?.name,
+    country: searchedLocation?.results?.[0]?.country,
+    currentDate: formatDate(weather?.daily?.time?.[0]),
     temperature,
+    feelsLike,
     windspeed,
     precipitation,
-    feelsLike,
-    humidity,
-    weatherInfoApi,
-    country,
+    humidity: weather?.hourly?.relative_humidity_2m[0],
+    weatherInfoApi: weather,
+    tempUnit,
+    windUnit,
+    precipUnit,
   };
 };
 

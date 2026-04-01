@@ -17,7 +17,9 @@ const HourlyForecast = () => {
   const { upcomingHours } = useHourlyWeather(selectedDate);
 
   const handleSelectDay = (date: string) => {
-    setSearchParams({ day: date });
+    const params = new URLSearchParams(searchParams);
+    params.set("day", date);
+    setSearchParams(params);
     setShowDropdown(false);
   };
 
